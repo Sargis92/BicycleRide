@@ -24,7 +24,7 @@ async function getBicycles(req, res, next) {
         const mongooseQueryFl =  {
             location: {
               $near: {
-                $maxDistance:maxdistance || 1000,
+                $maxDistance: maxdistance || 1000,
                 $geometry: {
                    type: "Point" ,
                    coordinates: [ lat, long ]
@@ -32,13 +32,11 @@ async function getBicycles(req, res, next) {
               }
             }
          }
-        const [ bicycle,total] = await Promise.all([
-           
-            BicycleModel.find(mongooseQueryFl),
-            BicycleModel.count(mongooseQueryFl),
-        ]);
+        
+        const bicycles = await  BicycleModel.find(mongooseQueryFl)
 
-        return ResponseHandlerUtil.handleList(res, bicycle, total);
+
+        return ResponseHandlerUtil.handleList(res, bicycles, bicycles.length);
     } catch (error) {
         return next(error);
     }
