@@ -1,0 +1,15 @@
+{
+    "api": {
+        "port": 3000
+    },
+    "db": {
+        
+        "connection": "mongodb+srv://admin1:admin1@cluster0.veday.mongodb.net/bicycle_db?retryWrites=true&w=majority",
+        "options": {
+            "useCreateIndex": true,
+            "useNewUrlParser": true,
+            "useUnifiedTopology": true,
+            "useFindAndModify": false
+        }
+    }
+}
